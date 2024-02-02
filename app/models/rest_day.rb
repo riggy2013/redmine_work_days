@@ -1,7 +1,7 @@
 class RestDay < ActiveRecord::Base
   unloadable
   
-  attr_accessible :day, :description
+  #attr_accessible :day, :description #deprecated, replaced by strong parameter
 
   default_scope { order("#{RestDay.table_name}.day ASC") }
   
@@ -24,5 +24,6 @@ class RestDay < ActiveRecord::Base
     def clear!
       @rest_days = nil
     end
+
   end
 end

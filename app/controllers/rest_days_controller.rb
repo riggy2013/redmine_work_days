@@ -1,6 +1,6 @@
 class RestDaysController < ApplicationController
-  before_filter :require_admin
-  before_filter :get_year
+  before_action :require_admin
+  before_action :get_year
 
   unloadable
 
@@ -13,7 +13,9 @@ class RestDaysController < ApplicationController
   end
 
   def create
-    @rest_day = RestDay.new(params[:rest_day])
+#    @rest_day = RestDay.new(params[:rest_day])
+    @rest_day = RestDay.new(rest_day_params)
+
     if @rest_day.save
       RestDay.clear!
       redirect_to rest_days_path, :notice => l(:notice_create_rest_day_success)
@@ -68,5 +70,10 @@ class RestDaysController < ApplicationController
       @year = params[:year].present? ? Date.new(params[:year].to_i, 1, 1) : Date.today
       session[:year] = @year
     end
+  end
+
+  private
+  def rest_day_params
+    params.require(:rest_day).permit(:day, :description)
   end
 end

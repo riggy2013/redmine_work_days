@@ -7,10 +7,14 @@ module RedmineUtilsDateCalculationPatch
     base.send(:include, InstanceMethods)
     base.class_eval do
       unloadable
-      alias_method_chain :working_days,           :rest_day
-      alias_method_chain :add_working_days,       :rest_day
-      alias_method_chain :next_working_date,      :rest_day
-      alias_method_chain :non_working_week_days,  :rest_day
+      #alias_method_chain :working_days,           :rest_day
+      #alias_method_chain :add_working_days,       :rest_day
+      #alias_method_chain :next_working_date,      :rest_day
+      #alias_method_chain :non_working_week_days,  :rest_day
+      alias_method :working_days,           :working_days_with_rest_day
+      alias_method :add_working_days,       :add_working_days_with_rest_day
+      alias_method :next_working_date,      :next_working_date_with_rest_day
+      alias_method :non_working_week_days,  :non_working_week_days_with_rest_day
       alias :non_working_week_day?  :non_working_week_day?  # FIXME check why this solves NoMethodError
       alias :non_working_day?       :non_working_day?       # FIXME check why this solves NoMethodError
     end
