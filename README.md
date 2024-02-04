@@ -63,4 +63,5 @@ $ rm -rf plugins/redmine_work_days
 ## About
 
 Copyright (c) 2015 [Agileware Inc.](http://agileware.jp) released under the MIT license
+
 Copyright (c) 2024 David Peng released under the MIT license
