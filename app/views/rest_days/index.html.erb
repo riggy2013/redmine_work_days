@@ -11,12 +11,12 @@
   <%- end -%>
   
   <div style="margin-top: 10px;">
-    <h4>読み込みCSVのフォーマット(例)</h4>
+    <h4>CSV File Example</h4>
     <div class="box tabular">
-      2013-04-29,昭和の日<br />
-      2013-05-03,憲法記念日<br />
-      2013-05-04,みどりの日<br />
-      2013-05-05,こどもの日
+      2013-04-29,昭和の日,0<br />
+      2013-05-03,憲法記念日,0<br />
+      2013-05-04,みどりの日,0<br />
+      2013-05-05,こどもの日,0
     </div>
   </div>
 </div>
@@ -29,6 +29,8 @@
     <%= f.date_field :day, :size => 10, :required => true %><%= calendar_for('rest_day_day') %>
     <%= l(:label_create_rest_day_description) %>
     <%= f.text_field :description, :size => 20, :required => true %>
+    <%= l(:label_create_rest_day_work_type) %>
+    <%= f.check_box :work_type, :size => 10%>
   </div>
   
   <%= submit_tag l(:submit_create_rest_day) %>
@@ -71,6 +73,7 @@
       <th>#</th>
       <th><%= h(l(:field_rest_day_day)) %></th>
       <th><%= h(l(:field_rest_day_description)) %></th>
+      <th><%= h(l(:field_rest_day_work_type)) %></th>
     </tr>
   </thead>
   <tbody>
@@ -78,7 +81,8 @@
   <tr id="rest_day-<%= rest_day.id %>" class="rest_day <%= cycle('odd', 'even') %>">
     <td class="id"><%= rest_day.id %></td>
     <td class="day" width="100"><%= rest_day.day %></td>
-    <td class="description"><%= rest_day.description %></td>
+    <td class="description" width="400"><%= rest_day.description %></td>
+    <td class="work_type"><%= rest_day.work_type %></td>
   </tr>
   <% end -%>
   </tbody>

@@ -73,7 +73,7 @@ module RedmineUtilsDateCalculationPatch
 
     # Checks if a date is non working day
     def non_working_day?(date)
-      non_working_week_day?(date) || RestDay.rest_day?(date)
+      !RestDay.work_day?(date) && (non_working_week_day?(date) || RestDay.rest_day?(date))
     end
   end
 end

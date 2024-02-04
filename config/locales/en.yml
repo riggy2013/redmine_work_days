@@ -2,14 +2,18 @@
 en:
   rest_day: "Rest Day"
   rest_days: "Rest Days"
+  work_days: "Work Days"
   
   label_rest_day: "Rest Day"
   label_rest_days: "Rest Days"
+  label_work_days: "Work Days"
   label_rest_day_day: "Day"
-  label_rest_day_description: "Date"
+  label_rest_day_description: "Description"
+  label_rest_day_work_type: "Work Type (0: Rest; 1: Work)"
   
   field_rest_day_day: "Date"
   field_rest_day_description: "Description"
+  field_rest_day_work_type: "Work Type (0: Rest; 1: Work)"
   
   # import
   label_import_csv: "Import from CSV"
@@ -18,7 +22,8 @@ en:
   # create
   label_create_rest_day: "Add Rest Days"
   label_create_rest_day_day: "Day:"
-  label_create_rest_day_description: "Date:"
+  label_create_rest_day_description: "Description:"
+  label_create_rest_day_work_type: "Work Type (Check: Work):"
   submit_create_rest_day: "Add Rest Days"
   notice_create_rest_day_success: "Success Rest Days Added"
   alert_create_rest_day_failure: "Failure Rest Days Added"
@@ -26,6 +31,7 @@ en:
   # delete
   label_delete_rest_days_separator: "-"
   label_delete_rest_days_description: ""
+  label_delete_rest_days_work_type: ""
   label_delete_rest_days: "Delete Rest Days"
   submit_delete_rest_days: "Delete Rest Days"
   notice_delete_rest_days_success: "Success %{count} Rest Days Deleted."

@@ -13,8 +13,15 @@ class RestDaysController < ApplicationController
   end
 
   def create
-#    @rest_day = RestDay.new(params[:rest_day])
-    @rest_day = RestDay.new(rest_day_params)
+    @rest_day = RestDay.find_by(day: rest_day_params[:day])
+
+    if @rest_day != nil
+      @rest_day.update(rest_day_params)
+    else
+      @rest_day = RestDay.new(rest_day_params)
+    end
+    #@rest_day = RestDay.new(rest_day_params)
+
 
     if @rest_day.save
       RestDay.clear!
@@ -74,6 +81,6 @@ class RestDaysController < ApplicationController
 
   private
   def rest_day_params
-    params.require(:rest_day).permit(:day, :description)
+    params.require(:rest_day).permit(:day, :description, :work_type)
   end
 end

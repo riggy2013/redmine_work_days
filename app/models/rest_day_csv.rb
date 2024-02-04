@@ -9,6 +9,7 @@ class RestDayCsv
 
   DAY_COLUMN = 0
   DESCRIPTION_COLUMN = 1
+  WORK_DAY_TYPE = 2 #default 0 for rest day, 1 for work day
 
   attr_accessor :file
   attr_accessor :headers, :data_rows
@@ -32,7 +33,7 @@ class RestDayCsv
     line_num = 1
     ActiveRecord::Base.transaction do
       CSV.parse(io_string) do |row|
-        RestDay.create!(:day => row[DAY_COLUMN], :description => row[DESCRIPTION_COLUMN])
+        RestDay.create!(:day => row[DAY_COLUMN], :description => row[DESCRIPTION_COLUMN], :work_type => row[WORK_DAY_TYPE])
         line_num += 1
       end
     end

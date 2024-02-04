@@ -1,59 +1,66 @@
 # Redmine Work Days Plugin
 
-## イントロダクション
+## Introduction
 
-Redmineに個別の休業日の設定を追加するプラグインです。
+This is a plugin based on Agileware's redmine_work_days.
 
-休業日に設定された日は、Redmine標準の休業日同様に扱われ、ガントチャート上でグレー表示されます。
+Previous plugin only works for redmine 2.x. Now it is upgraded for redmine 5.1. Other versions are not tested.
 
-## 機能
+This is a plugin that adds individual holiday/working day settings to Redmine.
 
-* 管理画面でCSV読み込ませて休業日を設定することができる
-* ガントチャート上での休業日を表示することができる  
-  休業日を反映するためにはRedmineインスタンスの再起動が必要です。
+Days set as closed days are treated like Redmine's standard closed days and are displayed in gray on the Gantt chart.
 
-## インストール方法
+## function
 
-以下は `production` 環境でRedmineを動作させている前提です。
+* You can set closed days by loading CSV on the management screen
+* Can display closed days on Gantt chart
+* Can set working Saturday or Sunday.
 
-### Gitを使う
+   It is necessary to restart the Redmine instance to reflect the holiday.
 
-```
+## Installation method
+
+The following assumes that Redmine is running in the `production` environment.
+
+### Use Git
+
+````
 $ cd [Redmine Root]
-$ git clone git@github.com:agileware-jp/redmine_work_days.git plugins/redmine_work_days
+$ git clone git@github.com:riggy2013/redmine_work_days.git plugins/redmine_work_days
 $ bundle install
 $ RAILS_ENV=production bundle exec rake redmine:plugins:migrate NAME=redmine_work_days
-```
+````
 
-### ZIPファイルを使う
+### Use ZIP file
 
-1. [Download ZIP]を押下する
-2. ZIPファイルを解凍する
-3. ディレクトリ名を「redmine_work_days」に変更する
-4. プラグインを配備する  
-  以下に「redmine_work_days」を配備する。
+1. Press [Download ZIP]
+2. Unzip the ZIP file
+3. Change the directory name to "redmine_work_days"
+4. Deploy the plugin
+   Deploy “redmine_work_days” below.
 
-  ```
-  [Redmine Root]/plugins
-  ```
+   ````
+   [Redmine Root]/plugins
+   ````
 
-5. プラグインをインストールする
+5. Install the plugin
 
-  ```
-  $ bundle install
-  $ RAILS_ENV=production bundle exec rake redmine:plugins:migrate NAME=redmine_work_days
-  ```
+   ````
+   $ bundle install
+   $ RAILS_ENV=production bundle exec rake redmine:plugins:migrate NAME=redmine_work_days
+   ````
 
-## アンインストール方法
+## How to uninstall
 
-以下は `production` 環境でRedmineを動作させている前提です。
+The following assumes that Redmine is running in the `production` environment.
 
-```
+````
 $ cd [Redmine Root]
 $ RAILS_ENV=production bundle exec rake redmine:plugins:migrate NAME=redmine_work_days VERSION=0
 $ rm -rf plugins/redmine_work_days
-```
+````
 
 ## About
 
 Copyright (c) 2015 [Agileware Inc.](http://agileware.jp) released under the MIT license
+Copyright (c) 2024 David Peng released under the MIT license
